@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include, patterns
 from django.contrib import admin
-import views
+from Instagram import views
 
 from Instagram import settings
 
