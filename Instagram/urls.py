@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^',include('Profile.urls'),name='index'),
     url(r'^api/images/$',views.images),
     url(r'^api/comments/(?P<pk>[0-9]*)/$',views.comments),
+    url(r'^api/comments/$',views.addcomments),
     url(r'^login/$',
         'django.contrib.auth.views.login',
         name='login'),

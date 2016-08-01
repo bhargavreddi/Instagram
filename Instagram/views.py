@@ -55,3 +55,20 @@ def comments(request,pk = None):
         obj = Comments(user = user,image = image,comment = comment)
         obj.save()
         return Response()
+
+
+@api_view(['POST'])
+def addcomments(request):
+    """
+    Retrieve, update or delete a snippet instance.
+    """
+    if request.method == 'POST':
+        data = request.data
+        id = data.get('image_id')
+        user_id = data.get('user_id')
+        comment = data.get('comment')
+        image = Image.objects.get(id=id)
+        user = User.objects.get(id=user_id)
+        obj = Comments(user = user,image = image,comment = comment)
+        obj.save()
+        return Response()
