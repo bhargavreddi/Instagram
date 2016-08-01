@@ -1,0 +1,171 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+{% load staticfiles %}
+<html>
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Profile</title>
+        <!-- Bootstrap -->
+        {# Load CSS and JavaScript #}
+        {% bootstrap_javascript %}
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <script type="text/javascript">
+                // using jQuery
+                function getCookie(name) {
+                    var cookieValue = null;
+                    if (document.cookie && document.cookie !== '') {
+                        var cookies = document.cookie.split(';');
+                        for (var i = 0; i < cookies.length; i++) {
+                            var cookie = jQuery.trim(cookies[i]);
+                            // Does this cookie string begin with the name we want?
+                            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                break;
+                            }
+                        }
+                    }
+                    return cookieValue;
+                }
+                var csrftoken = getCookie('csrftoken');
+                $(document).ready(function () {
+                    $.getJSON("http://127.0.0.1:8000/api/comments/{{ image.id }}",
+                            function (data) {
+                                $.each(data, function (index, element) {
+                                    $('#comments').append(
+                                           "<li class=\"list-group-item\"><h3 align=\"left\">" + element.user.username + "</h3><p align=\"left\">" + element.comment + "</p></li>"
+                                    );
+                                });
+                            });
+                });
+                function csrfSafeMethod(method) {
+                    // these HTTP methods do not require CSRF protection
+                    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+                }
+                $.ajaxSetup({
+                    beforeSend: function(xhr, settings) {
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                        }
+                    }
+                });
+                function sendData() {
+                    $.ajax({
+                            url: 'http://127.0.0.1:8000/api/images/',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+
+                                image_id:'{{ image.id }}',
+                                user_id : '{{ user.id }}'
+                            }),
+                            dataType: 'json'
+                    });
+                    var color = $(".glyphicon-thumbs-up").css("color");
+                    if(color=="rgb(0, 0, 255)")
+                    {
+                        $(".glyphicon-thumbs-up").css("color","black");
+                        var x =parseInt($("#json").html());
+                        $("#json").html(x-1);
+                    }
+                    else {
+                        $(".glyphicon-thumbs-up").css("color", "blue");
+                        var x =parseInt($("#json").html());
+                        $("#json").html(x+1);
+                    }
+                }
+                function clickComment(){
+                    var text = $("#comment").val();
+                    $.ajax({
+                            url: 'http://127.0.0.1:8000/api/comments/',
+                            type: 'POST',
+                            contentType: 'application/json',
+                            data: JSON.stringify({
+
+                                image_id:'{{ image.id }}',
+                                user_id : '{{ user.id }}',
+                                comment : text
+                            }),
+                            dataType: 'json'
+                    });
+                    $('#comments').append(
+                            "<li class=\"list-group-item\"><h3 align=\"left\"> {{ user.username }} </h3><p align=\"left\">" + text + "</p></li>"
+                    );
+                    $('#comment').val('');
+                }
+            </script>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src= "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+		<title>Images</title>
+	</head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="{% static 'site/images/logo.png' %}" width="50px" height="50px">
+          </a>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Account Settings</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/logout/">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+        </div>
+      </div>
+    </nav>
+            <br><br>
+            <div class="container">
+            <div class="page-header">
+                <h1 id="page-title">Posted By : {{ image.user.username}}</h1>
+            </div>
+        <br><br>
+                <center>
+                <div class="well" style="width: 850px;height: auto">
+                <div class="thumbnail" style="width: 800px">
+                    <label>Date:{{ image.date }}</label><br>
+                  <img src="{{ image.image.url }}" alt="image">
+
+                  <div class="caption">
+                      {% if liked %}
+                        <p><a href="javascript:sendData()"><span class="glyphicon glyphicon-thumbs-up" style="font-size:3em;color: blue"></span></a></p>
+                      {% else %}
+                      <p><a href="javascript:sendData()"><span class="glyphicon glyphicon-thumbs-up" style="font-size:3em;color: black"></span></a></p>
+                     {% endif %}
+                      <p style="font-family: 'Baskerville Old Face';font-size:3em;" id="json">{{ likes }}</p>
+                  </div>
+                </div>
+                <div class="page-header">
+                  <h3 align="left"><strong>Comments:</strong></h3>
+                </div>
+                <ul class="list-group" id="comments">
+
+                </ul>
+                <br>
+                <input type="textarea" class="form-control" style="height: 100px" id="comment"/>
+                <br>
+                <button type="button" class="btn btn-info btn-md" style="float : right" onclick="clickComment()">Comment</button>
+                <br>
+                </div>
+                    </center>
+            </div>
+    </body>
+</html>

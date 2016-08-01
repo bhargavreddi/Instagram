@@ -1,0 +1,98 @@
+{# Load the tag library #}
+{% load bootstrap3 %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Profile</title>
+    <!-- Bootstrap -->
+    {# Load CSS and JavaScript #}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src= "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="{% static 'site/images/logo.png' %}" width="50px" height="50px">
+          </a>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Account Settings</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/logout/">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+        </div>
+      </div>
+    </nav>
+    <br><br>
+    <div class="container">
+            <div class="page-header">
+                <h1 id="page-title">Profile</h1>
+            </div>
+            <br><br>
+            <center>
+            <div>
+            <table width="70%">
+            <tr>
+                <td><img src="{% static 'site/images/profile.png' %}"/></td>
+                <td>
+            <!-- Trigger the modal with a button -->
+                    <h3>Username</h3><label>{{ user.username }}</label>
+                    <br>
+                    <h3>Email</h3><label>{{ user.email }}</label>
+                    <br><br>
+                    <!--
+                    Follow
+            <button type="button"  class="btn btn-warning btn-lg">Follow</button>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            -->
+            </tr>
+            </table>
+            </div>
+            </center>
+            <br>
+            <hr>
+
+            <div class="row">
+                {% for image in object_list %}
+              <div class="col-sm-6 col-md-3 col-lg-4">
+                <div class="thumbnail">
+                    <a href="/image/{{ image.id }}/">
+                  <img src={{ image.image.url }} alt="image" width="300px" height="250px">
+                        </a>
+                  <div class="caption">
+                    <p><a href="/profile/delete/{{image.id }}/" class="btn btn-danger" role="button">Delete</a></p>
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+
+            </div>
+    </div>
+    <input type="hidden" id="username" value="{{ user }}"/>
+</body>
+</html>

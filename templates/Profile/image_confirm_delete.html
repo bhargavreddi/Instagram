@@ -1,0 +1,55 @@
+{% load bootstrap3 %}
+{% load static %}
+<html>
+	<head>
+		<title>Delete Image</title>
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+	</head>
+    <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="Brand" src="{% static 'site/images/logo.png' %}" width="50px" height="50px">
+          </a>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Account Settings</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/logout/">Logout</a></li>
+                  </ul>
+                </li>
+              </ul>
+        </div>
+      </div>
+    </nav>
+    <br><br>
+    <div class="container">
+        <div class="page-header">
+            <h1 id="page-title">Delete Image</h1>
+        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <p>Are you sure you want to delete the Image?</p>
+            <button class="btn btn-danger btn-md" type="submit" value="Confirm">Confirm
+                </button>
+            &nbsp; &nbsp;
+            <a href="/profile/">
+            <button class="btn btn-default btn-md" type="button" value="Confirm">Cancel
+                </button>
+                </a>
+        </form>
+    </div>
+    </body>
+</html>
