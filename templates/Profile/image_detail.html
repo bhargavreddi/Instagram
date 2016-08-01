@@ -31,7 +31,7 @@
                 }
                 var csrftoken = getCookie('csrftoken');
                 $(document).ready(function () {
-                    $.getJSON("http://127.0.0.1:8000/api/comments/{{ image.id }}",
+                    $.getJSON("http://bhargavreddi.pythonanywhere.com/api/comments/{{ image.id }}",
                             function (data) {
                                 $.each(data, function (index, element) {
                                     $('#comments').append(
@@ -53,7 +53,7 @@
                 });
                 function sendData() {
                     $.ajax({
-                            url: 'http://127.0.0.1:8000/api/images/',
+                            url: 'http://bhargavreddi.pythonanywhere.com/api/images/',
                             type: 'POST',
                             contentType: 'application/json',
                             data: JSON.stringify({
@@ -79,7 +79,7 @@
                 function clickComment(){
                     var text = $("#comment").val();
                     $.ajax({
-                            url: 'http://127.0.0.1:8000/api/comments/',
+                            url: 'http://bhargavreddi.pythonanywhere.com/api/comments/',
                             type: 'POST',
                             contentType: 'application/json',
                             data: JSON.stringify({
