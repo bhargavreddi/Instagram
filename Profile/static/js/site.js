@@ -1,4 +1,7 @@
 // using jQuery
+url1 = 'http://bhargavreddi.pythonanywhere.com';
+url2 = 'http://127.0.0.1:8000';
+url_link = url2;
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -16,7 +19,7 @@ function getCookie(name) {
 }
 var csrftoken = getCookie('csrftoken');
 $(document).ready(function () {
-    $.getJSON("http://bhargavreddi.pythonanywhere.com/api/comments/{{ image.id }}",
+    $.getJSON(url_link+"/api/comments/"+id,
         function (data) {
             $.each(data, function (index, element) {
                 $('#comments').append(
@@ -29,22 +32,25 @@ function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
-$.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-            xhr.setRequestHeader("X-CSRFToken", csrftoken);
-        }
-	}
-});
-function sendData() {
-    $.ajax({
-		url: 'http://bhargavreddi.pythonanywhere.com/api/images/',
+function addHeader(){
+	$.ajaxSetup({
+		beforeSend: function(xhr, settings) {
+			if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+				xhr.setRequestHeader("X-CSRFToken", csrftoken);
+			}
+		}
+	});
+}
+function sendData(image_id,user_id) {
+    addHeader();
+	$.ajax({
+		url: url_link+'/api/images/',
 		type: 'POST',
 		contentType: 'application/json',
 		data: JSON.stringify({
 
-			image_id:'{{ image.id }}',
-			user_id : '{{ user.id }}'
+			image_id:image_id,
+			user_id : user_id
 		}),
 		dataType: 'json'
 	});
@@ -61,22 +67,23 @@ function sendData() {
 		$("#json").html(x+1);
 	}
 }
-function clickComment(){
+function clickComment(image_id,user_id,nameUser){
+	addHeader();
 	var text = $("#comment").val();
 	$.ajax({
-		url: 'http://bhargavreddi.pythonanywhere.com/api/comments/',
+		url: url_link+'/api/comments/',
 		type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
 
-            image_id:'{{ image.id }}',
-            user_id : '{{ user.id }}',
+            image_id:image_id,
+			user_id : user_id,
             comment : text
         }),
         dataType: 'json'
     });
     $('#comments').append(
-        "<li class=\"list-group-item\"><h3 align=\"left\"> {{ user.username }} </h3><p align=\"left\">" + text + "</p></li>"
+        "<li class=\"list-group-item\"><h3 align=\"left\">"+ nameUser +" </h3><p align=\"left\">" + text + "</p></li>"
     );
     $('#comment').val('');
 }
