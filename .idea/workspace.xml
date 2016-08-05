@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c60bcf9-a752-4fb7-8298-1539dae3c7ae" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Profile/static/js/backbone.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Profile/static/js/backbone.localStorage-min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Profile/static/js/backbone.localStorage.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Profile/static/js/npm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Profile/static/js/underscore.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Instagram/settings.py" afterPath="$PROJECT_DIR$/Instagram/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Profile/static/js/site.js" afterPath="$PROJECT_DIR$/Profile/static/js/site.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Profile/urls.py" afterPath="$PROJECT_DIR$/Profile/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Profile/views.py" afterPath="$PROJECT_DIR$/Profile/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Profile/image_confirm_delete.html" afterPath="$PROJECT_DIR$/templates/Profile/image_confirm_delete.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Profile/image_detail.html" afterPath="$PROJECT_DIR$/templates/Profile/image_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Profile/image_form.html" afterPath="$PROJECT_DIR$/templates/Profile/image_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home.html" afterPath="$PROJECT_DIR$/templates/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/profile.html" afterPath="$PROJECT_DIR$/templates/profile.html" />
-    </list>
+    <list default="true" id="7c60bcf9-a752-4fb7-8298-1539dae3c7ae" name="Default" comment="" />
     <ignored path="Instagram.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -106,7 +90,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="site.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="site.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Profile/static/js/site.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1394">
@@ -116,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="image_detail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="image_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/Profile/image_detail.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="83" column="38" selection-start-line="83" selection-start-column="38" selection-end-line="83" selection-end-column="38" />
+              <caret line="84" column="32" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -602,7 +586,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32298136" sideWeight="0.4941435" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32298136" sideWeight="0.4941435" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="manage.py@Instagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290735" sideWeight="0.49707174" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1018,18 +1002,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Profile/static/js/site.js">
+    <entry file="file://$PROJECT_DIR$/templates/Profile/image_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="82" column="19" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="19" />
+        <state relative-caret-position="221">
+          <caret line="84" column="32" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Profile/image_detail.html">
+    <entry file="file://$PROJECT_DIR$/Profile/static/js/site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="83" column="38" selection-start-line="83" selection-start-column="38" selection-end-line="83" selection-end-column="38" />
+        <state relative-caret-position="1394">
+          <caret line="82" column="19" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="19" />
           <folding />
         </state>
       </provider>
