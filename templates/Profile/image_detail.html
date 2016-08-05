@@ -68,7 +68,7 @@
                       {% if liked %}
                         <p><a href="javascript:sendData('{{ image.id }}','{{ user.id }}')"><span class="glyphicon glyphicon-thumbs-up" style="font-size:3em;color: blue"></span></a></p>
                       {% else %}
-                      <p><a href="javascript:sendData()"><span class="glyphicon glyphicon-thumbs-up" style="font-size:3em;color: black"></span></a></p>
+                      <p><a href="javascript:sendData('{{ image.id }}','{{ user.id }}')"><span class="glyphicon glyphicon-thumbs-up" style="font-size:3em;color: black"></span></a></p>
                      {% endif %}
                       <p style="font-family: 'Baskerville Old Face';font-size:3em;" id="json">{{ likes }}</p>
                   </div>
