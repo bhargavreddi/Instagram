@@ -116,3 +116,14 @@ class SignupView(FormView):
         profile.save()
         return super(SignupView, self).form_valid(form)
 
+@method_decorator(login_required, name='dispatch')
+class UserDetailView(ListView):
+    model = User
+    fields = ['id','username']
+    template_name = 'search.html'
+
+    def get_context_data(self, **kwargs):
+        context=super(UserDetailView, self).get_context_data(**kwargs)
+        username = self.kwargs.get('pk')
+        context['object_list'] =  User.objects.all().filter(username__contains=username)
+        return context

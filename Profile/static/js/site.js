@@ -1,7 +1,7 @@
 // using jQuery
 url1 = 'http://bhargavreddi.pythonanywhere.com';
 url2 = 'http://127.0.0.1:8000';
-url_link = url1;
+url_link = url2;
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -18,16 +18,6 @@ function getCookie(name) {
     return cookieValue;
 }
 var csrftoken = getCookie('csrftoken');
-$(document).ready(function () {
-    $.getJSON(url_link+"/api/comments/"+id,
-        function (data) {
-            $.each(data, function (index, element) {
-                $('#comments').append(
-                    "<li class=\"list-group-item\"><h3 align=\"left\">" + element.user.username + "</h3><p align=\"left\">" + element.comment + "</p></li>"
-				);
-			});
-		});
-});
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -86,4 +76,11 @@ function clickComment(image_id,user_id,nameUser){
         "<li class=\"list-group-item\"><h3 align=\"left\">"+ nameUser +" </h3><p align=\"left\">" + text + "</p></li>"
     );
     $('#comment').val('');
+}
+function search()
+{
+	var context = $("#search_user").val();
+	if(context =="" || context == null)
+		return;
+	window.location.replace(url_link+"/search/"+context+"/");
 }

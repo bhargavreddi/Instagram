@@ -55,43 +55,55 @@
     <br><br>
     <div class="container">
             <div class="page-header">
-                <h1 id="page-title">Profile</h1>
+                <h1 id="page-title">User Found:</h1>
             </div>
-            <br><br>
-            <center>
-            <div>
-            <table width="70%">
-            <tr>
-                <td><img src="{% static 'site/images/profile.png' %}"/></td>
-                <td>
-            <!-- Trigger the modal with a button -->
-                    <h3>Username</h3><label>{{ user.username }}</label>
-                    <br>
-                    <h3>Email</h3><label>{{ user.email }}</label>
-                    <br><br>
-                    <!--
-                    Follow
-            <button type="button"  class="btn btn-warning btn-lg">Follow</button>
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            -->
-            </tr>
-            </table>
-            </div>
-            </center>
             <br>
-            <hr>
 
             <div class="row">
-                {% for image in object_list %}
-              <div class="col-sm-6 col-md-3 col-lg-4">
-                <div class="thumbnail">
-                    <a href="/image/{{ image.id }}/">
-                  <img src={{ image.image.url }} alt="image" width="300px" height="250px">
-                        </a>
-                </div>
-              </div>
-                {% endfor %}
 
+                <div class="well" style="width: 850px;height: auto">
+                    {% for user in object_list %}
+                <div class="thumbnail" style="width: 800px">
+                    <table width="80%">
+                        <tr>
+                        <td><img src="{% static 'site/images/profile.png' %}" style="width:150px;height:150px;"/></td>
+                        <td><a href="/profile/{{ user.id }}/">
+                    <label style="font-size: xx-large">{{ user.username }}</label>
+                        </a><br>
+                        </td>
+                        </tr>
+                    </table>
+                </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Image Upload</h4>
+                  </div>
+                  <div class="modal-body">
+                        <br>
+                        <form enctype="multipart/form-data" action="" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button class="btn btn-success" type="submit" >Upload</button>
+                        </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
             </div>
     </div>
     <input type="hidden" id="username" value="{{ user }}"/>
