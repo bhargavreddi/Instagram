@@ -5,12 +5,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http.response import  Http404
-from django.shortcuts import render
 
 # Create your views here.
 from django.utils.decorators import method_decorator
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView, FormView
+from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
 from django import forms
 from django.views.generic.list import ListView
 
@@ -127,3 +126,18 @@ class UserDetailView(ListView):
         username = self.kwargs.get('pk')
         context['object_list'] =  User.objects.all().filter(username__contains=username)
         return context
+
+
+@method_decorator(login_required, name='dispatch')
+class ProfileEdit(UpdateView):
+    model = User
+    fields = ['first_name','last_name','email']
+    template_name = 'profile_edit.html'
+
+    def get_success_url(self):
+        return reverse("profile")
+        # return super(ListCreateView, self).get_success_url()
+
+    def get_object(self, queryset=None):
+        obj = User.objects.get(id = self.request.user.id)
+        return obj
