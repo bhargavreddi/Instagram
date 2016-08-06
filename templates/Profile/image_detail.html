@@ -28,7 +28,7 @@
                     function (data) {
                         $.each(data, function (index, element) {
                             $('#user_liked').append(
-                                "<a href=\"profile/"+element.user.id+"\" id=\"user"+element.user.id+"\">"+"<li class=\"list-group-item\"><h3 align=\"left\">" + element.user.username + "</h3></li></a>"
+                                "<a href=\"/profile/"+element.user.id+"\" id=\"user"+element.user.id+"\">"+"<li class=\"list-group-item\"><h3 align=\"left\">" + element.user.username + "</h3></li></a>"
                             );
                         });
                     });

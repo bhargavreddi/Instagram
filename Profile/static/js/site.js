@@ -57,7 +57,7 @@ function sendData(image_id,user_id,user_name) {
 		var x =parseInt($("#json").html());
 		$("#json").html(x+1);
 		$('#user_liked').append(
-			"<a href=\"profile/"+user_id+"\" id=\"user"+user_id+"\">"+"<li class=\"list-group-item\"><h3 align=\"left\">" + user_name + "</h3></li></a>"
+			"<a href=\"/profile/"+user_id+"\" id=\"user"+user_id+"\">"+"<li class=\"list-group-item\"><h3 align=\"left\">" + user_name + "</h3></li></a>"
 		);
 	}
 }

@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c60bcf9-a752-4fb7-8298-1539dae3c7ae" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Instagram/urls.py" afterPath="$PROJECT_DIR$/Instagram/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Instagram/views.py" afterPath="$PROJECT_DIR$/Instagram/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Instagram/settings.py" afterPath="$PROJECT_DIR$/Instagram/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Profile/serializer.py" afterPath="$PROJECT_DIR$/Profile/serializer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Profile/static/js/site.js" afterPath="$PROJECT_DIR$/Profile/static/js/site.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Profile/views.py" afterPath="$PROJECT_DIR$/Profile/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Profile/image_detail.html" afterPath="$PROJECT_DIR$/templates/Profile/image_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search.html" afterPath="$PROJECT_DIR$/templates/search.html" />
     </list>
     <ignored path="Instagram.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,8 +45,8 @@
       <file leaf-file-name="serializer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Profile/serializer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
+            <state relative-caret-position="102">
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -71,11 +67,11 @@
       <file leaf-file-name="image_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/Profile/image_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="92" column="108" selection-start-line="92" selection-start-column="108" selection-end-line="92" selection-end-column="108" />
+            <state relative-caret-position="193">
+              <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
               <folding>
-                <marker date="1470450465270" expanded="false" signature="5557:5570" placeholder="..." />
-                <marker date="1470450465270" expanded="false" signature="5681:5694" placeholder="..." />
+                <marker date="1470450647128" expanded="false" signature="5558:5571" placeholder="..." />
+                <marker date="1470450647128" expanded="false" signature="5682:5695" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -91,7 +87,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="site.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="site.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Profile/static/js/site.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
@@ -101,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Instagram/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state relative-caret-position="54">
+              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="97" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -140,12 +136,12 @@
         <option value="$PROJECT_DIR$/templates/profile_edit.html" />
         <option value="$PROJECT_DIR$/templates/search.html" />
         <option value="$PROJECT_DIR$/Profile/views.py" />
-        <option value="$PROJECT_DIR$/Profile/serializer.py" />
         <option value="$PROJECT_DIR$/Instagram/views.py" />
         <option value="$PROJECT_DIR$/Instagram/urls.py" />
         <option value="$PROJECT_DIR$/templates/Profile/image_detail.html" />
-        <option value="$PROJECT_DIR$/Profile/static/js/site.js" />
+        <option value="$PROJECT_DIR$/Profile/serializer.py" />
         <option value="$PROJECT_DIR$/Instagram/settings.py" />
+        <option value="$PROJECT_DIR$/Profile/static/js/site.js" />
       </list>
     </option>
   </component>
@@ -934,14 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Profile/serializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="29" column="21" selection-start-line="29" selection-start-column="21" selection-end-line="29" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Profile/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-821">
@@ -980,12 +968,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/Profile/image_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="92" column="108" selection-start-line="92" selection-start-column="108" selection-end-line="92" selection-end-column="108" />
+        <state relative-caret-position="193">
+          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
           <folding>
-            <marker date="1470450465270" expanded="false" signature="5557:5570" placeholder="..." />
-            <marker date="1470450465270" expanded="false" signature="5681:5694" placeholder="..." />
+            <marker date="1470450647128" expanded="false" signature="5558:5571" placeholder="..." />
+            <marker date="1470450647128" expanded="false" signature="5682:5695" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Profile/serializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Instagram/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="97" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -993,14 +997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Instagram/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
           <folding />
         </state>
       </provider>
