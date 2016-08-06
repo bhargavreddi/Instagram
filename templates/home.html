@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Profile</title>
+    <title>Home</title>
+    <link rel="shortcut icon" href="{% static 'site/images/logo.png' %}" />
     <!-- Bootstrap -->
     {# Load CSS and JavaScript #}
     {% bootstrap_css %}
@@ -58,50 +59,27 @@
                 <h1 id="page-title">Welcome .. !!</h1>
             </div>
             <br>
-
+            {% if image_count != 0 %}
             <div class="row">
                 {% for image in object_list %}
               <center>
                 <div class="well" style="width: 850px;height: auto">
-                <div class="thumbnail" style="width: 800px">
+                <div class="thumbnail" style="width: 800px;height: 500px;">
                     <a href="/profile/{{ image.user.id }}/">
                     <label>{{ image.user.username }}</label>
                         </a><br>
                     <label>Date:{{ image.date }}</label><br>
                     <a href="/image/{{ image.id }}/">
-                  <img src="{{ image.image.url }}" alt="image"></a>
+                  <img src="{{ image.image.url }}" alt="image" style="height: 400px;"></a>
                 </div>
                 </div>
                     </center>
                 {% endfor %}
 
             </div>
-
-            <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Image Upload</h4>
-                  </div>
-                  <div class="modal-body">
-                        <br>
-                        <form enctype="multipart/form-data" action="" method="post">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button class="btn btn-success" type="submit" >Upload</button>
-                        </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+                {% else %}
+                <div class="alert alert-info" role="alert" style="font-size: x-large"><Strong>No Images to Display!!</Strong> Go and Add Some Images or Follow some user to get images</div>
+             {% endif %}
     </div>
     <input type="hidden" id="username" value="{{ user }}"/>
 </body>

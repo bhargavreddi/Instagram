@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Profile</title>
+    <title>My Profile</title>
+    <link rel="shortcut icon" href="{% static 'site/images/logo.png' %}" />
     <!-- Bootstrap -->
     {# Load CSS and JavaScript #}
     {% bootstrap_css %}
@@ -84,9 +85,9 @@
             <div class="row">
                 {% for image in images %}
               <div class="col-sm-6 col-md-3 col-lg-4">
-                <div class="thumbnail">
+                <div class="thumbnail" style="width: 380px;height: 320px;">
                     <a href="/image/{{ image.id }}/">
-                  <img src={{ image.image.url }} alt="image" width="300px" height="250px">
+                  <img src="{{ image.image.url }}" style="height: 220px;">
                         </a>
                   <div class="caption">
                     <p><a href="/profile/delete/{{image.id }}/" class="btn btn-danger" role="button">Delete</a></p>

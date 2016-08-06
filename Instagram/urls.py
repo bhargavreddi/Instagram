@@ -18,6 +18,8 @@ from django.contrib import admin
 from Instagram import views
 
 from Instagram import settings
+from django.contrib.auth.views import password_reset
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,6 +27,7 @@ urlpatterns = [
     url(r'^api/images/$',views.images),
     url(r'^api/comments/(?P<pk>[0-9]*)/$',views.comments),
     url(r'^api/likes/(?P<pk>[0-9]*)/$',views.getLikeUsers),
+    url(r'^api/follow/$',views.follow),
     url(r'^api/comments/$',views.addcomments),
     url(r'^login/$',
         'django.contrib.auth.views.login',
@@ -35,6 +38,7 @@ urlpatterns = [
         name='logout',
         kwargs={'next_page': '/login/'}
     ),
+    url(r'^reset/$', password_reset, name='password_reset',kwargs={'post_reset_redirect': '/login/'}),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
 ]

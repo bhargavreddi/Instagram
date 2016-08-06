@@ -13,6 +13,7 @@ from django.core.files.storage import FileSystemStorage
 # Create your models here.
 class Image(models.Model):
     image = models.ImageField(upload_to = 'pictures/')
+    description = models.CharField(max_length=225,default='Image')
     date = models.DateField()
     time = models.TimeField()
     user = models.ForeignKey(User)
@@ -25,3 +26,7 @@ class Comments(models.Model):
     image = models.ForeignKey(Image)
     comment = models.TextField(max_length=225)
     user = models.ForeignKey(User)
+
+class Follow(models.Model):
+    user = models.ForeignKey(User,related_name='user')
+    follower = models.ForeignKey(User,related_name='follower')

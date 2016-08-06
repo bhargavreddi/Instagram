@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from Profile.models import Image, Likes, Comments
+from Profile.models import Image, Likes, Comments, Follow
 from Profile.serializer import ImageSerializer, CommentsSerializer, LikeSerializer
 
 
@@ -82,3 +82,22 @@ def getLikeUsers(request,pk=None):
             snippet = Likes.objects.all().filter(image_id=pk)
         serializer = LikeSerializer(snippet, many=True)
         return Response(serializer.data)
+
+@api_view(['POST'])
+def follow(request):
+    if request.method == 'POST':
+        data = request.data
+        user_id = data.get('user_id')
+        follow_id = data.get('follow_id')
+        if user_id == follow_id:
+            return
+        user = User.objects.get(id = user_id)
+        follow_user = User.objects.get(id=follow_id)
+        entry = Follow.objects.all().filter(user=user,follower=follow_user)
+        if(entry.count()!=0):
+            entry.delete()
+        else:
+            follow_element = Follow(user=user,follower=follow_user)
+            follow_element.save()
+
+    return Response("")

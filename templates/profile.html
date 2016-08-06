@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Profile</title>
+    <link rel="shortcut icon" href="{% static 'site/images/logo.png' %}" />
     <!-- Bootstrap -->
     {# Load CSS and JavaScript #}
     {% bootstrap_css %}
@@ -69,11 +70,17 @@
                     <br>
                     <h3>Email</h3><label>{{ user.email }}</label>
                     <br><br>
-                    <!--
-                    Follow
-            <button type="button"  class="btn btn-warning btn-lg">Follow</button>
+                {% if user.id != profile_id %}
+                <div id="follow">
+            {% if follow == 'false' %}
+            <button type="button"  class="btn btn-success btn-lg" onclick="follow('{{ user.id }}','{{ profile_id }}')" id="follow_button">Follow</button>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            -->
+                {% else %}
+                <button type="button"  class="btn btn-warning btn-lg" onclick="follow('{{ user.id }}','{{ profile_id }}')" id="follow_button">Unfollow</button>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            {% endif %}
+                </div>
+            {% endif %}
             </tr>
             </table>
             </div>
@@ -84,9 +91,9 @@
             <div class="row">
                 {% for image in object_list %}
               <div class="col-sm-6 col-md-3 col-lg-4">
-                <div class="thumbnail">
+                <div class="thumbnail" style="width: 380px;height: 250px;">
                     <a href="/image/{{ image.id }}/">
-                  <img src={{ image.image.url }} alt="image" width="300px" height="250px">
+                  <img src="{{ image.image.url }}" style="height: 220px;">
                         </a>
                 </div>
               </div>

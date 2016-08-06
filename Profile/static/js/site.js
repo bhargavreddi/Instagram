@@ -88,3 +88,34 @@ function search()
 		return;
 	window.location.replace(url_link+"/search/"+context+"/");
 }
+function follow(user_id,follower_id) {
+	if(user_id == follower_id)
+	{
+		alert("You Cannot Follow yourself");
+		return;
+	}
+	addHeader();
+	$.ajax({
+		url: url_link+'/api/follow/',
+		type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+
+            follow_id:follower_id,
+			user_id : user_id
+        }),
+        dataType: 'json'
+    });
+	if($("#follow_button").html() == 'Follow')
+	{
+		$("#follow").html(
+			"<button type=\"button\"  class=\"btn btn-warning btn-lg\" onclick=\"follow('{{ user.id }}','{{ profile_id }}')\" id=\"follow_button\">Unfollow</button> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"
+		);
+	}
+	else
+	{
+		$("#follow").html(
+			"<button type=\"button\"  class=\"btn btn-success btn-lg\" onclick=\"follow('{{ user.id }}','{{ profile_id }}')\" id=\"follow_button\">Follow</button> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"
+		);
+	}
+}
