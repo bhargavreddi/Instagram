@@ -60,7 +60,7 @@
             <br>
 
             <div class="row">
-
+                {% if count != 0 %}
                 <div class="well" style="width: 850px;height: auto">
                     {% for user in object_list %}
                 <div class="thumbnail" style="width: 800px">
@@ -76,6 +76,11 @@
                 </div>
                     {% endfor %}
                 </div>
+                    {% else %}
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                      <strong>No User Found</strong>
+                    </div>
+                {% endif %}
 
 
             </div>

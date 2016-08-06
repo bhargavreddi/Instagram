@@ -24,7 +24,16 @@
                             );
                         });
                     });
+                    $.getJSON(url_link+"/api/likes/"+id,
+                    function (data) {
+                        $.each(data, function (index, element) {
+                            $('#user_liked').append(
+                                "<a href=\"profile/"+element.user.id+"\" id=\"user"+element.user.id+"\">"+"<li class=\"list-group-item\"><h3 align=\"left\">" + element.user.username + "</h3></li></a>"
+                            );
+                        });
+                    });
             });
+
         </script>
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -79,11 +88,11 @@
 
                   <div class="caption">
                       {% if liked %}
-                        <p><a href="javascript:sendData('{{ image.id }}','{{ user.id }}')"><span class="glyphicon glyphicon-thumbs-up" style="font-size:3em;color: blue"></span></a></p>
+                        <p><a href="javascript:sendData('{{ image.id }}','{{ user.id }}','{{ user.username }}')"><span class="glyphicon glyphicon-thumbs-up" style="font-size:3em;color: blue"></span></a></p>
                       {% else %}
-                      <p><a href="javascript:sendData('{{ image.id }}','{{ user.id }}')"><span class="glyphicon glyphicon-thumbs-up" style="font-size:3em;color: black"></span></a></p>
+                      <p><a href="javascript:sendData('{{ image.id }}','{{ user.id }}','{{ user.username }}')"><span class="glyphicon glyphicon-thumbs-up" style="font-size:3em;color: black"></span></a></p>
                      {% endif %}
-                      <p style="font-family: 'Baskerville Old Face';font-size:3em;" id="json">{{ likes }}</p>
+                      <p style="font-family: 'Baskerville Old Face';font-size:3em;" id="json" data-toggle="modal" data-target="#myModal">{{ likes }}</p>
                   </div>
                 </div>
                 <div class="page-header">
@@ -99,6 +108,26 @@
                 <br>
                 </div>
                     </center>
+            </div>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Image Likes</h4>
+                  </div>
+                  <div class="modal-body">
+                      <ul id="user_liked" class="list-group">
+
+                      </ul>
+                  </div>
+                </div>
+
+              </div>
             </div>
     </body>
 </html>

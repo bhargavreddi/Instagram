@@ -31,7 +31,7 @@ function addHeader(){
 		}
 	});
 }
-function sendData(image_id,user_id) {
+function sendData(image_id,user_id,user_name) {
     addHeader();
 	$.ajax({
 		url: url_link+'/api/images/',
@@ -50,11 +50,15 @@ function sendData(image_id,user_id) {
 		$(".glyphicon-thumbs-up").css("color","black");
 		var x =parseInt($("#json").html());
 		$("#json").html(x-1);
+		$("#user"+user_id).remove();
 	}
 	else {
 		$(".glyphicon-thumbs-up").css("color", "blue");
 		var x =parseInt($("#json").html());
 		$("#json").html(x+1);
+		$('#user_liked').append(
+			"<a href=\"profile/"+user_id+"\" id=\"user"+user_id+"\">"+"<li class=\"list-group-item\"><h3 align=\"left\">" + user_name + "</h3></li></a>"
+		);
 	}
 }
 function clickComment(image_id,user_id,nameUser){

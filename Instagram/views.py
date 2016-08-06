@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from Profile.models import Image, Likes, Comments
-from Profile.serializer import ImageSerializer, CommentsSerializer
+from Profile.serializer import ImageSerializer, CommentsSerializer, LikeSerializer
 
 
 @api_view(['GET','POST'])
@@ -72,3 +72,13 @@ def addcomments(request):
         obj = Comments(user = user,image = image,comment = comment)
         obj.save()
         return Response()
+
+@api_view(['GET'])
+def getLikeUsers(request,pk=None):
+    if request.method == 'GET':
+        if (pk == None):
+            snippet = Likes.objects.all().values('user')
+        else:
+            snippet = Likes.objects.all().filter(image_id=pk)
+        serializer = LikeSerializer(snippet, many=True)
+        return Response(serializer.data)

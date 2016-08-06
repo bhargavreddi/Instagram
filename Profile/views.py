@@ -125,6 +125,7 @@ class UserDetailView(ListView):
         context=super(UserDetailView, self).get_context_data(**kwargs)
         username = self.kwargs.get('pk')
         context['object_list'] =  User.objects.all().filter(username__contains=username)
+        context['count'] = User.objects.all().filter(username__contains=username).count()
         return context
 
 

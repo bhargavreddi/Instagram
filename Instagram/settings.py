@@ -83,19 +83,7 @@ WSGI_APPLICATION = 'Instagram.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bhargavreddi$instagram',
-        'USER': 'bhargavreddi',
-        'PASSWORD': 'djangoadmin',
-        'HOST': 'bhargavreddi.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
-        'OPTION' : {
-            'autocommit' : True
-        }
-    }
-}
+
 
 # DATABASES = {
 #     'default': {
