@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^$',views.HomeView.as_view(),name='home'),
     url(r'^profile/$',views.Profile.as_view(),name='profile'),
     url(r'^profile/edit/(?P<pk>[0-9]+)/$', views.ProfileEdit.as_view(), name='profile_edit'),
+    url(r'^profile/update/(?P<pk>[0-9]+)/$', views.ImageUpdate.as_view(), name='image_edit'),
     url(r'^profile/(?P<pk>[0-9]+)/$',views.ProfileView.as_view(),name='profile_id'),
     url(r'^profile/delete/(?P<pk>[0-9]+)/$',views.ImageDeleteView.as_view(),name='delete_image'),
     url(r'^image/(?P<pk>[0-9]+)/$',views.ImageDetailView.as_view(),name='image_view'),

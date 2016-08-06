@@ -167,3 +167,28 @@ class ProfileEdit(UpdateView):
     def get_object(self, queryset=None):
         obj = User.objects.get(id = self.request.user.id)
         return obj
+
+@method_decorator(login_required, name='dispatch')
+class ImageUpdate(UpdateView):
+    model = Image
+    fields = ['description']
+    template_name = 'image_update.html'
+
+    def get_success_url(self):
+        return reverse("profile")
+        # return super(ListCreateView, self).get_success_url()
+
+    def get_object(self, queryset=None):
+        try:
+            obj = Image.objects.get(id = self.kwargs.get('pk'))
+            if obj.user != self.request.user:
+                raise Http404
+        except Exception:
+            raise Http404
+        return obj
+
+    def get_context_data(self, **kwargs):
+        context = super(ImageUpdate, self).get_context_data(**kwargs)
+        obj = Image.objects.get(id=self.kwargs.get('pk'))
+        context['image'] = obj.image
+        return context

@@ -71,7 +71,7 @@ def addcomments(request):
         user = User.objects.get(id=user_id)
         obj = Comments(user = user,image = image,comment = comment)
         obj.save()
-        return Response()
+        return Response(obj.id)
 
 @api_view(['GET'])
 def getLikeUsers(request,pk=None):
@@ -101,3 +101,15 @@ def follow(request):
             follow_element.save()
 
     return Response("")
+
+@api_view(['POST'])
+def deletecomments(request):
+    """
+    Retrieve, update or delete a snippet instance.
+    """
+    if request.method == 'POST':
+        data = request.data
+        id = data.get('comment_id')
+        obj = Comments.objects.get(id=id)
+        obj.delete()
+        return Response("")

@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^api/likes/(?P<pk>[0-9]*)/$',views.getLikeUsers),
     url(r'^api/follow/$',views.follow),
     url(r'^api/comments/$',views.addcomments),
+    url(r'^api/comment/delete/$',views.deletecomments),
     url(r'^login/$',
         'django.contrib.auth.views.login',
         name='login'),

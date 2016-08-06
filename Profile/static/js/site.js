@@ -64,6 +64,7 @@ function sendData(image_id,user_id,user_name) {
 function clickComment(image_id,user_id,nameUser){
 	addHeader();
 	var text = $("#comment").val();
+	var comment_id = "";
 	$.ajax({
 		url: url_link+'/api/comments/',
 		type: 'POST',
@@ -74,11 +75,17 @@ function clickComment(image_id,user_id,nameUser){
 			user_id : user_id,
             comment : text
         }),
+		success:function (data) {
+			comment_id = data;
+			var division = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">";
+			var button = "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" onclick=\"deleteComment("+comment_id+")\"><span aria-hidden=\"true\">&times;</span></button>";
+			var data = "<p><strong>"+nameUser+"</strong></p>"+text+"</div>";
+			$('#comments').append(
+				division+button+data
+			);
+		},
         dataType: 'json'
     });
-    $('#comments').append(
-        "<li class=\"list-group-item\"><h3 align=\"left\">"+ nameUser +" </h3><p align=\"left\">" + text + "</p></li>"
-    );
     $('#comment').val('');
 }
 function search()
@@ -118,4 +125,17 @@ function follow(user_id,follower_id) {
 			"<button type=\"button\"  class=\"btn btn-success btn-lg\" onclick=\"follow('{{ user.id }}','{{ profile_id }}')\" id=\"follow_button\">Follow</button> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"
 		);
 	}
+}
+function deleteComment(id)
+{
+	addHeader();
+	$.ajax({
+		url: url_link+'/api/comment/delete/',
+		type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            comment_id:id
+        }),
+        dataType: 'json'
+    });
 }

@@ -19,9 +19,18 @@
             $(document).ready(function () {
             $.getJSON(url_link+"/api/comments/"+id,
                     function (data) {
+                        var division = "<div class=\"alert alert-success alert-dismissible\" role=\"alert\">";
+                        //"<li class=\"list-group-item\"><h3 align=\"left\">" + element.user.username + "</h3><p align=\"left\">" + element.comment + "</p></li>"
                         $.each(data, function (index, element) {
+                            var button = "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" onclick=\"deleteComment("+element.id+")\"><span aria-hidden=\"true\">&times;</span></button>";
+                            var data = "<p><strong>"+element.user.username+"</strong></p>"+element.comment+"</div>";
+                            result ="";
+                            if(element.user.id == {{ user.id }})
+                                    result = division+button+data;
+                            else
+                                    result = division+data;
                             $('#comments').append(
-                                "<li class=\"list-group-item\"><h3 align=\"left\">" + element.user.username + "</h3><p align=\"left\">" + element.comment + "</p></li>"
+                                result
                             );
                         });
                     });
@@ -122,9 +131,9 @@
                     <h4 class="modal-title">Image Likes</h4>
                   </div>
                   <div class="modal-body">
-                      <ul id="user_liked" class="list-group">
+                      <div id="user_liked" class="list-group">
 
-                      </ul>
+                      </div>
                   </div>
                 </div>
 
